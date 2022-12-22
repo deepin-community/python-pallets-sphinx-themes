@@ -1,0 +1,73 @@
+python-pallets-sphinx-themes (2.0.1-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Update Maintainer field with new Debian Python Team
+    contact address.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Debian Janitor ]
+  * Bump debhelper from old 12 to 13.
+  * Remove obsolete field Name from debian/upstream/metadata (already present in
+    machine-readable debian/copyright).
+  * Update standards version to 4.5.1, no changes needed.
+
+  [ Sandro Tosi ]
+  * New upstream release
+
+ -- Sandro Tosi <morph@debian.org>  Sat, 09 Oct 2021 22:40:13 -0400
+
+python-pallets-sphinx-themes (1.2.3-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 4.4.1.
+  * Manually add python3-importlib-metadata into depends.
+  * d/copyright: Bump my copyright year.
+
+ -- Ondřej Nový <onovy@debian.org>  Wed, 08 Jan 2020 17:14:49 +0100
+
+python-pallets-sphinx-themes (1.2.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Rebase patches.
+
+ -- Ondřej Nový <onovy@debian.org>  Sat, 10 Aug 2019 10:31:21 +0200
+
+python-pallets-sphinx-themes (1.1.4-1) unstable; urgency=medium
+
+  * New upstream release
+  * d/copyright:
+    - Fix for new upstream release
+    - Bump my copyright years
+  * Bump standards version to 4.4.0 (no changes)
+  * Bump debhelper compat level to 12 and use debhelper-compat
+
+ -- Ondřej Nový <onovy@debian.org>  Wed, 10 Jul 2019 13:29:24 +0200
+
+python-pallets-sphinx-themes (1.1.2-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Ondřej Nový <onovy@debian.org>  Sat, 29 Sep 2018 13:46:02 +0200
+
+python-pallets-sphinx-themes (1.1.1-1) unstable; urgency=medium
+
+  * New upstream release
+  * Add python3-packaging to B-D
+
+ -- Ondřej Nový <onovy@debian.org>  Tue, 18 Sep 2018 12:45:29 +0200
+
+python-pallets-sphinx-themes (1.1.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Convert git repository from git-dpm to gbp layout
+  * Bump Standards-Version to 4.2.1
+  * d/p/0001-Prevent-privacy-breach.patch: Rewrite for new release
+
+ -- Ondřej Nový <onovy@debian.org>  Wed, 05 Sep 2018 14:10:47 +0200
+
+python-pallets-sphinx-themes (1.0.1-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #898628)
+
+ -- Ondřej Nový <onovy@debian.org>  Mon, 14 May 2018 17:04:32 +0200

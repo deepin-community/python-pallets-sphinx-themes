@@ -1,0 +1,44 @@
+From: =?utf-8?b?T25kxZllaiBOb3bDvQ==?= <onovy@debian.org>
+Date: Mon, 14 May 2018 14:59:33 +0200
+Subject: Prevent privacy breach
+
+---
+ src/pallets_sphinx_themes/themes/babel/static/babel.css     | 2 --
+ src/pallets_sphinx_themes/themes/click/static/click.css     | 2 --
+ src/pallets_sphinx_themes/themes/jinja/static/jinja.css     | 1 -
+ src/pallets_sphinx_themes/themes/platter/static/platter.css | 1 -
+ 4 files changed, 6 deletions(-)
+
+--- a/src/pallets_sphinx_themes/themes/babel/static/babel.css
++++ b/src/pallets_sphinx_themes/themes/babel/static/babel.css
+@@ -1,5 +1,4 @@
+ @import url(pocoo.css);
+-@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+ 
+ body {
+   font-family: "Verdana", "Garamond", "Georgia", serif;
+--- a/src/pallets_sphinx_themes/themes/click/static/click.css
++++ b/src/pallets_sphinx_themes/themes/click/static/click.css
+@@ -1,6 +1,4 @@
+ @import url("pocoo.css");
+-@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
+-@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+ 
+ body, pre, code {
+   font-family: "Ubuntu Mono", "Consolas", "Menlo", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
+--- a/src/pallets_sphinx_themes/themes/jinja/static/jinja.css
++++ b/src/pallets_sphinx_themes/themes/jinja/static/jinja.css
+@@ -1,5 +1,4 @@
+ @import url("pocoo.css");
+-@import url("https://fonts.googleapis.com/css?family=Crimson+Text");
+ 
+ h1, h2, h3, h4, h5, h6, p.admonition-title, div.sphinxsidebar input {
+   font-family: "Crimson Text", "Garamond", "Georgia", serif;
+--- a/src/pallets_sphinx_themes/themes/platter/static/platter.css
++++ b/src/pallets_sphinx_themes/themes/platter/static/platter.css
+@@ -1,5 +1,4 @@
+ @import url(pocoo.css);
+-@import url(https://fonts.googleapis.com/css?family=Fira+Mono:400,700|Bitter:400,400italic,700);
+ 
+ body {
+   font-family: "Bitter", "Garamond", "Georgia", serif;
