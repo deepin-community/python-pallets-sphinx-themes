@@ -1,3 +1,43 @@
+Version 2.1.1
+-------------
+
+Released 2023-06-08
+
+-   Remove leftover Python 2 compatibility code. :pr:`69`
+-   Dotted underlines on links are smaller. :issue:`70`
+
+
+Version 2.1.0
+-------------
+
+Released 2023-04-25
+
+-   Drop support for Python 3.6 and 3.7.
+-   Require Sphinx >= 3.
+-   Remove previously deprecated code.
+-   Fix table of contents overflow issue.
+
+
+Version 2.0.3
+-------------
+
+Released 2022-12-24
+
+-   Fix compatibility with ``packaging>=22``.
+
+
+Version 2.0.2
+-------------
+
+Released 2021-11-10
+
+-   Detect if Sphinx dirhtml builder is generating canonical URLs with
+    ".html" and replace with the correct dir URL. :issue:`47`
+-   ``canonical_url`` config is deprecated. Use Sphinx's built-in
+    ``html_baseurl`` config instead. :pr:`53`
+-   Address deprecations in Jinja 2.0. :pr:`54`
+
+
 Version 2.0.1
 -------------
 

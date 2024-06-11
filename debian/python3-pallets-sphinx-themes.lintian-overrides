@@ -1,0 +1,8 @@
+# These all are no documentation, these are all templates.
+python3-pallets-sphinx-themes: package-contains-documentation-outside-usr-share-doc [usr/lib/python3/dist-packages/pallets_sphinx_themes/themes/pocoo/404.html]
+python3-pallets-sphinx-themes: package-contains-documentation-outside-usr-share-doc [usr/lib/python3/dist-packages/pallets_sphinx_themes/themes/pocoo/ethicalads.html]
+python3-pallets-sphinx-themes: package-contains-documentation-outside-usr-share-doc [usr/lib/python3/dist-packages/pallets_sphinx_themes/themes/pocoo/layout.html]
+python3-pallets-sphinx-themes: package-contains-documentation-outside-usr-share-doc [usr/lib/python3/dist-packages/pallets_sphinx_themes/themes/pocoo/localtoc.html]
+python3-pallets-sphinx-themes: package-contains-documentation-outside-usr-share-doc [usr/lib/python3/dist-packages/pallets_sphinx_themes/themes/pocoo/project.html]
+python3-pallets-sphinx-themes: package-contains-documentation-outside-usr-share-doc [usr/lib/python3/dist-packages/pallets_sphinx_themes/themes/pocoo/relations.html]
+python3-pallets-sphinx-themes: package-contains-documentation-outside-usr-share-doc [usr/lib/python3/dist-packages/pallets_sphinx_themes/themes/pocoo/versions.html]

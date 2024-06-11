@@ -3,11 +3,12 @@ Upstream-Name: pallets-sphinx-themes
 Source: https://github.com/pallets/pallets-sphinx-themes
 
 Files: *
-Copyright: 2007, Pallets
+Copyright: 2007-2023, Pallets
 License: BSD-3
 
 Files: debian/*
 Copyright: 2018-2020, Ondřej Nový <onovy@debian.org>
+ 2023, Carsten Schoenert <c.schoenert@t-online.de>
 License: BSD-3
 
 License: BSD-3
