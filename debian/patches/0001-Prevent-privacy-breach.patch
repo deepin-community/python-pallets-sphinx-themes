@@ -2,13 +2,16 @@ From: =?utf-8?b?T25kxZllaiBOb3bDvQ==?= <onovy@debian.org>
 Date: Mon, 14 May 2018 14:59:33 +0200
 Subject: Prevent privacy breach
 
+Forwarded: Not-Needed
 ---
- src/pallets_sphinx_themes/themes/babel/static/babel.css     | 2 --
+ src/pallets_sphinx_themes/themes/babel/static/babel.css     | 1 -
  src/pallets_sphinx_themes/themes/click/static/click.css     | 2 --
  src/pallets_sphinx_themes/themes/jinja/static/jinja.css     | 1 -
  src/pallets_sphinx_themes/themes/platter/static/platter.css | 1 -
- 4 files changed, 6 deletions(-)
+ 4 files changed, 5 deletions(-)
 
+diff --git a/src/pallets_sphinx_themes/themes/babel/static/babel.css b/src/pallets_sphinx_themes/themes/babel/static/babel.css
+index 04870e5..2e3055d 100644
 --- a/src/pallets_sphinx_themes/themes/babel/static/babel.css
 +++ b/src/pallets_sphinx_themes/themes/babel/static/babel.css
 @@ -1,5 +1,4 @@
@@ -17,6 +20,8 @@ Subject: Prevent privacy breach
  
  body {
    font-family: "Verdana", "Garamond", "Georgia", serif;
+diff --git a/src/pallets_sphinx_themes/themes/click/static/click.css b/src/pallets_sphinx_themes/themes/click/static/click.css
+index 1c0eee4..1378e53 100644
 --- a/src/pallets_sphinx_themes/themes/click/static/click.css
 +++ b/src/pallets_sphinx_themes/themes/click/static/click.css
 @@ -1,6 +1,4 @@
@@ -26,6 +31,8 @@ Subject: Prevent privacy breach
  
  body, pre, code {
    font-family: "Ubuntu Mono", "Consolas", "Menlo", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
+diff --git a/src/pallets_sphinx_themes/themes/jinja/static/jinja.css b/src/pallets_sphinx_themes/themes/jinja/static/jinja.css
+index 83de6a1..f6d65a0 100644
 --- a/src/pallets_sphinx_themes/themes/jinja/static/jinja.css
 +++ b/src/pallets_sphinx_themes/themes/jinja/static/jinja.css
 @@ -1,5 +1,4 @@
@@ -34,6 +41,8 @@ Subject: Prevent privacy breach
  
  h1, h2, h3, h4, h5, h6, p.admonition-title, div.sphinxsidebar input {
    font-family: "Crimson Text", "Garamond", "Georgia", serif;
+diff --git a/src/pallets_sphinx_themes/themes/platter/static/platter.css b/src/pallets_sphinx_themes/themes/platter/static/platter.css
+index 1a5a0c6..feac057 100644
 --- a/src/pallets_sphinx_themes/themes/platter/static/platter.css
 +++ b/src/pallets_sphinx_themes/themes/platter/static/platter.css
 @@ -1,5 +1,4 @@

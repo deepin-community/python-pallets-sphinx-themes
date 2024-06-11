@@ -6,7 +6,6 @@ import tempfile
 from functools import partial
 
 import click
-from click._compat import text_type
 from click.testing import CliRunner
 from click.testing import EchoingStdin
 from docutils import nodes
@@ -66,12 +65,12 @@ def patch_modules():
 
 class ExampleRunner(CliRunner):
     def __init__(self):
-        super(ExampleRunner, self).__init__(echo_stdin=True)
-        self.namespace = {"click": click, "__file__": "dummy.py", "str": text_type}
+        super().__init__(echo_stdin=True)
+        self.namespace = {"click": click, "__file__": "dummy.py"}
 
     @contextlib.contextmanager
     def isolation(self, *args, **kwargs):
-        iso = super(ExampleRunner, self).isolation(*args, **kwargs)
+        iso = super().isolation(*args, **kwargs)
 
         with iso as streams:
             try:
@@ -95,7 +94,7 @@ class ExampleRunner(CliRunner):
         terminate_input=False,
         env=None,
         _output_lines=None,
-        **extra
+        **extra,
     ):
         """Like :meth:`CliRunner.invoke` but displays what the user
         would enter in the terminal for env vars, command args, and
@@ -111,7 +110,7 @@ class ExampleRunner(CliRunner):
         if env:
             for key, value in sorted(env.items()):
                 value = shlex.quote(value)
-                output_lines.append("$ export {}={}".format(key, value))
+                output_lines.append(f"$ export {key}={value}")
 
         args = args or []
 
@@ -130,7 +129,7 @@ class ExampleRunner(CliRunner):
             if terminate_input:
                 input += "\x04"
 
-        result = super(ExampleRunner, self).invoke(
+        result = super().invoke(
             cli=cli, args=args, input=input, env=env, prog_name=prog_name, **extra
         )
         output_lines.extend(result.output.splitlines())
@@ -242,7 +241,7 @@ class RunExampleDirective(Directive):
             runner.close()
             raise
 
-        doc.append(".. sourcecode:: text", "")
+        doc.append(".. sourcecode:: shell-session", "")
         doc.append("", "")
 
         for line in rv:

@@ -1,9 +1,8 @@
-import io
 import json
 import os
 from collections import namedtuple
 
-from jinja2 import contextfunction
+from jinja2 import pass_context
 from packaging import version as pv
 
 from .theme_check import only_pallets_theme
@@ -27,7 +26,7 @@ def local_versions(app):
 
     if isinstance(config_versions, str):
         if os.path.isfile(config_versions):
-            with io.open(config_versions, "rt", encoding="utf8") as f:
+            with open(config_versions, encoding="utf8") as f:
                 config_versions = json.load(f)
         else:
             config_versions = json.loads(config_versions)
@@ -54,7 +53,7 @@ def local_versions(app):
         if version.slug == slug:
             versions[i] = version._replace(current=True)
 
-        if not seen_latest and _is_version(version.slug):
+        if not seen_latest and version.version is not None:
             seen_latest = True
             versions[i] = version._replace(latest=True)
 
@@ -64,47 +63,45 @@ def local_versions(app):
 def readthedocs_versions(app):
     config_versions = app.config.html_context["versions"]
     current_slug = app.config.html_context["current_version"]
-    versions = []
+    number_versions = []
+    name_versions = []
 
     for slug, _ in config_versions:
         dev = slug in {"main", "master", "default", "latest"}
+        version = _parse_version(slug)
 
-        if dev:
-            name = "Development"
-        elif not _is_version(slug):
-            name = slug.title()
-        else:
+        if version is not None:
             name = slug
+            append_to = number_versions
+        else:
+            name = "Development" if dev else slug.title()
+            append_to = name_versions
 
-        versions.append(
+        append_to.append(
             DocVersion(name=name, slug=slug, dev=dev, current=slug == current_slug)
         )
 
-    versions.sort(key=lambda x: x.version, reverse=True)
-    versions.sort(key=lambda x: not x.dev)
+    # put the newest numbered version first
+    number_versions.sort(key=lambda x: x.version, reverse=True)
+    # put non-dev named versions first
+    name_versions.sort(key=lambda x: x.dev, reverse=True)
+    versions = number_versions + name_versions
 
-    for i, version in enumerate(versions):
-        if _is_version(version.slug):
-            versions[i] = version._replace(latest=True)
-            break
-    else:
-        for i, version in enumerate(versions):
-            if version.slug == "stable":
-                versions[i] = version._replace(latest=True)
-                break
+    # if there are non-dev versions, mark the newest one as the latest
+    if versions and not versions[0].dev:
+        versions[0] = versions[0]._replace(latest=True)
 
     return versions
 
 
-def _is_version(value, placeholder="x"):
-    if value.endswith(".{}".format(placeholder)):
+def _parse_version(value: str, placeholder: str = "x"):
+    if value.endswith(f".{placeholder}"):
         value = value[: -(len(placeholder) + 1)]
 
     try:
-        pv.Version(value)
-        return True
+        return pv.Version(value)
     except pv.InvalidVersion:
-        return False
+        return None
 
 
 class DocVersion(
@@ -114,16 +111,14 @@ class DocVersion(
 
     def __new__(cls, name, slug=None, latest=False, dev=False, current=False):
         slug = slug or name
-        version = pv.parse(slug)
+        version = _parse_version(slug)
 
-        if _is_version(slug):
+        if version is not None:
             name = "Version " + name
 
-        return super(DocVersion, cls).__new__(
-            cls, name, slug, version, latest, dev, current
-        )
+        return super().__new__(cls, name, slug, version, latest, dev, current)
 
-    @contextfunction
+    @pass_context
     def href(self, context):
         pathto = context["pathto"]
         master_doc = context["master_doc"]
@@ -134,14 +129,16 @@ class DocVersion(
         path = builder.get_target_uri(pagename)
         return "/".join((master, "..", self.slug, path))
 
-    @contextfunction
+    @pass_context
     def banner(self, context):
         if self.latest:
             return
 
         latest = context["latest_version"]
 
-        if latest is None:
+        # Don't show a banner if the latest version couldn't be determined, or if this
+        # is the "stable" version.
+        if latest is None or self.name == "stable":
             return
 
         if self.dev:

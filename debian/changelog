@@ -1,3 +1,51 @@
+python-pallets-sphinx-themes (2.1.1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 2.1.1
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Wed, 21 Jun 2023 19:10:34 +0200
+
+python-pallets-sphinx-themes (2.1.0-1) experimental; urgency=medium
+
+  * Team upload
+  * New upstream version 2.1.0
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Fri, 28 Apr 2023 20:15:37 +0200
+
+python-pallets-sphinx-themes (2.0.3-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Debian Janitor ]
+  * Update standards version to 4.6.1, no changes needed.
+
+  [ Carsten Schoenert ]
+  * d/gbp.conf: Add basic default config
+  * New upstream version 2.0.3
+  * Rebuild patch queue from patch-queue branch
+    Mark the one patch as no forwarding is needed.
+  * d/control: Running wrap-and-sort -ast
+  * d/control: Remove non needed build dependencies
+  * d/control: Increase Standards-Version to 4.6.2
+    No further changes needed.
+  * d/control: Remove dep an python3-importlib-metadata
+    No need to hard decode a dependency on this package, let's handle adding
+    package deps by	pybuild.
+  * d/copyright: Update year data, add myself
+  * d/rules: Drop --with option in default target
+  * d/control: Add Rules-Requires-Root: no
+  * d/watch: Switch over to use git mode on GitHub
+  * Lintian: Ignore some things on the binary package
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Sun, 26 Feb 2023 15:01:08 +0100
+
+python-pallets-sphinx-themes (2.0.2-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream release
+
+ -- Piotr Ożarowski <piotr@debian.org>  Tue, 13 Sep 2022 19:38:07 +0200
+
 python-pallets-sphinx-themes (2.0.1-1) unstable; urgency=medium
 
   [ Ondřej Nový ]

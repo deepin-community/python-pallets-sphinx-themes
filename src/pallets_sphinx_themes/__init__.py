@@ -4,20 +4,17 @@ import re
 import sys
 import textwrap
 from collections import namedtuple
+from importlib import metadata as importlib_metadata
 
+from sphinx.application import Sphinx
 from sphinx.builders._epub_base import EpubBuilder
+from sphinx.builders.dirhtml import DirectoryHTMLBuilder
 from sphinx.builders.singlehtml import SingleFileHTMLBuilder
 from sphinx.errors import ExtensionError
 
 from .theme_check import only_pallets_theme
 from .theme_check import set_is_pallets_theme
 from .versions import load_versions
-
-try:
-    from importlib import metadata as importlib_metadata
-except ImportError:
-    # Python <3.8 compatibility
-    import importlib_metadata
 
 
 def setup(app):
@@ -72,19 +69,26 @@ def add_404_page(app):
 
 
 @only_pallets_theme()
-def canonical_url(app, pagename, templatename, context, doctree):
-    """Build the canonical URL for a page. Appends the path for the
-    page to the base URL specified by the
-    ``html_context["canonical_url"]`` config and stores it in
-    ``html_context["page_canonical_url"]``.
+def canonical_url(app: Sphinx, pagename, templatename, context, doctree):
+    """Sphinx 1.8 builds a canonical URL if ``html_baseurl`` config is
+    set. However, it builds a URL ending with ".html" when using the
+    dirhtml builder, which is incorrect. Detect this and generate the
+    correct URL for each page.
     """
-    base = context.get("canonical_url")
+    base = app.config.html_baseurl
 
-    if not base:
+    if (
+        not base
+        or not isinstance(app.builder, DirectoryHTMLBuilder)
+        or not context["pageurl"]
+        or not context["pageurl"].endswith(".html")
+    ):
         return
 
+    # Fix pageurl for dirhtml builder if this version of Sphinx still
+    # generates .html URLs.
     target = app.builder.get_target_uri(pagename)
-    context["page_canonical_url"] = base + target
+    context["pageurl"] = base + target
 
 
 @only_pallets_theme()
@@ -157,7 +161,7 @@ def get_version(name, version_length=2, placeholder="x"):
     version = ".".join(release.split(".", version_length)[:version_length])
 
     if placeholder:
-        version = "{}.{}".format(version, placeholder)
+        version = f"{version}.{placeholder}"
 
     return release, version
 
