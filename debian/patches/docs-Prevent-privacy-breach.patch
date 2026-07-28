@@ -1,0 +1,31 @@
+From: =?utf-8?b?T25kxZllaiBOb3bDvQ==?= <onovy@debian.org>
+Date: Mon, 14 May 2018 14:59:33 +0200
+Subject: docs: Prevent privacy breach
+
+Forwarded: Not-Needed
+---
+ src/pallets_sphinx_themes/themes/click/static/click.css | 2 --
+ src/pallets_sphinx_themes/themes/jinja/static/jinja.css | 1 -
+ 2 files changed, 3 deletions(-)
+
+diff --git a/src/pallets_sphinx_themes/themes/click/static/click.css b/src/pallets_sphinx_themes/themes/click/static/click.css
+index 1c0eee4..1378e53 100644
+--- a/src/pallets_sphinx_themes/themes/click/static/click.css
++++ b/src/pallets_sphinx_themes/themes/click/static/click.css
+@@ -1,6 +1,4 @@
+ @import url("pocoo.css");
+-@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
+-@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+ 
+ body, pre, code {
+   font-family: "Ubuntu Mono", "Consolas", "Menlo", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
+diff --git a/src/pallets_sphinx_themes/themes/jinja/static/jinja.css b/src/pallets_sphinx_themes/themes/jinja/static/jinja.css
+index dc91e6a..57e4999 100644
+--- a/src/pallets_sphinx_themes/themes/jinja/static/jinja.css
++++ b/src/pallets_sphinx_themes/themes/jinja/static/jinja.css
+@@ -1,5 +1,4 @@
+ @import url("pocoo.css");
+-@import url("https://fonts.googleapis.com/css?family=Crimson+Text");
+ 
+ h1, h2, h3, h4, h5, h6, p.admonition-title, div.sphinxsidebar input {
+   font-family: "Crimson Text", "Garamond", "Georgia", serif;

@@ -117,9 +117,7 @@ class ExampleRunner(CliRunner):
         if prog_name is None:
             prog_name = cli.name.replace("_", "-")
 
-        output_lines.append(
-            "$ {} {}".format(prog_name, " ".join(shlex.quote(x) for x in args)).rstrip()
-        )
+        output_lines.append(f"$ {prog_name} {shlex.join(args)}".rstrip())
         # remove "python" from command
         prog_name = prog_name.rsplit(" ", 1)[-1]
 
@@ -256,6 +254,11 @@ class ClickDomain(Domain):
     name = "click"
     label = "Click"
     directives = {"example": DeclareExampleDirective, "run": RunExampleDirective}
+
+    def merge_domaindata(self, docnames, otherdata):
+        # Needed to support parallel build.
+        # Not using self.data -- nothing to merge.
+        pass
 
 
 def delete_example_runner_state(app, doctree):

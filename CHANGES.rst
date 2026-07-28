@@ -1,3 +1,52 @@
+Version 2.3.0
+-------------
+
+Released 2024-10-24
+
+-   When getting the canonical URL on Read the Docs, replace the path with
+    ``/en/stable/`` instead of ``/page/``. This can be configured with
+    ``rtd_canonical_path``. :pr:`122`
+-   The version banner can be disabled by setting ``version_banner = False``.
+    On Read the Docs, it is disabled when building the ``stable`` version or
+    PRs. :pr:`123`
+
+
+Version 2.2.0
+-------------
+
+Released 2024-10-15
+
+-   Get canonical URL from environment variable when building on Read the Docs.
+    :pr:`117`
+-   New version warning banner. Use JavaScript to query PyPI when viewing a
+    page, rather than baking the warning into the build. New builds of old
+    versions are no longer required for the banner to be correct. :pr:`117`
+-   Generate 404 page using the sphinx-notfound-page extension. This fixes the
+    URLs when the page is hosted so that it loads the CSS. :issue:`34`
+-   Remove handling for ``singlehtml_sidebars`` config which predated Sphinx's
+    support. :pr:`119`
+-   Remove "babel" and "platter" theme variants which were undocumented and did
+    not appear to be used by the relevant projects. :pr:`120`
+
+
+Version 2.1.3
+-------------
+
+Released 2024-04-29
+
+-   Allow Sphinx's parallel build feature. :issue:`88`
+
+
+Version 2.1.2
+-------------
+
+Released 2024-04-19
+
+-   Use modern packaging metadata with ``pyproject.toml`` instead of ``setup.cfg``.
+-   Use ``flit_core`` instead of ``setuptools`` as build backend.
+-   Compatibility with changes in Sphinx 7.3. :pr:`100`
+
+
 Version 2.1.1
 -------------
 
