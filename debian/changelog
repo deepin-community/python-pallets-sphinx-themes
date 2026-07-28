@@ -1,3 +1,34 @@
+python-pallets-sphinx-themes (2.3.0-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 2.3.0
+  * Rebuild patch queue from patch-queue branch
+    Adjusted and renamed patch:
+    0001-Prevent-privacy-breach.patch
+    -> docs-Prevent-privacy-breach.patch
+  * d/control: Rewrite long description of bin package
+  * d/p-p-s-t.lintian-overrides: Adjust entries
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Sun, 10 Nov 2024 12:33:31 +0100
+
+python-pallets-sphinx-themes (2.1.3-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Remove myself from Uploaders.
+
+  [ Kalyani Kenekar ]
+  * New upstream version 2.1.3
+  * Rebuild patch queue from patch-queue branch
+    Just refreshed existing patch.
+  * d/control: Adjust B-D due new upstream version
+    Upstream has switched from setuptools to flit as build backend.
+  * d/control: Bump Standards-Version to 4.7.0
+    No further changes needed.
+  * d/control: Adding myself to Uploaders
+  * d/copyright: Updated copyrights holder data
+
+ -- Kalyani Kenekar <kalyaniknkr@gmail.com>  Wed, 26 Jun 2024 22:33:24 +0530
+
 python-pallets-sphinx-themes (2.1.1-1) unstable; urgency=medium
 
   * Team upload
